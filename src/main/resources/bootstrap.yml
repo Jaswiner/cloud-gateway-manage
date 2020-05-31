@@ -1,0 +1,83 @@
+spring:
+  application:
+    name: CLOUD-GATEWAY-MANAGE
+---
+server:
+  port: 8446
+  servlet:
+    context-path: /gateway_manage
+---
+# nacos 配置
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: jaswine.top:18848
+        file-extension: yaml
+        # DEV
+        namespace: b7ab9e87-f67d-4c19-8fa6-c3af840453f0
+        # TEST
+#        namespace: 070a6f4d-189c-48e9-958c-b774c2b9a1f8
+        # PRO
+#        namespace: d3c2ff2b-5740-40e4-9853-25cba1d1b3dc
+---
+# Redis
+spring:
+  redis:
+    jedis:
+      pool:
+        min-idle: 0
+        max-idle: 8
+        max-wait: -1ms
+        max-active: 8
+---
+#数据库
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      max-active: 10
+      initial-size: 5
+      min-idle: 2
+      max-wait: 60000
+      pool-prepared-statements: true
+      web-stat-filter:
+        enabled: true
+        url-pattern: /druid
+
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  check-config-location: true
+  type-aliases-package: com.jaswine.gateway.manage.bean.pojo
+  configuration:
+    jdbc-type-for-null: null
+    cache-enabled: false
+    multiple-result-sets-enabled: true
+    default-executor-type: reuse
+    lazy-loading-enabled: false
+    aggressive-lazy-loading: true
+    default-statement-timeout: 3000
+    call-setters-on-nulls: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: partial
+    auto-mapping-unknown-column-behavior: none
+    default-enum-type-handler: org.apache.ibatis.type.EnumTypeHandler
+    return-instance-for-empty-row: false
+    local-cache-scope: session
+---
+#SpringBoot Devtools
+spring:
+  devtools:
+    restart:
+      additional-paths: src/main
+---
+#日志配置
+# 日志等级
+logging:
+  level:
+    com.alibaba.nacos.* : error
+  file:
+    max-size: 1GB
+  path: /logs/cloud-gateway-manage/

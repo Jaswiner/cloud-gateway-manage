@@ -1,10 +1,10 @@
 package com.jaswine.gateway.manage.rest;
 
-import com.lanswon.commons.core.log.Log;
-import com.lanswon.commons.web.custom.dto.DTO;
-import com.lanswon.gateway.manage.bean.cd.RouterCd;
-import com.lanswon.gateway.manage.bean.pojo.Router;
-import com.lanswon.gateway.manage.service.RouterService;
+import com.jaswine.bean.base.dto.DTO;
+import com.jaswine.gateway.manage.bean.cd.RouterCd;
+import com.jaswine.gateway.manage.bean.pojo.Router;
+import com.jaswine.gateway.manage.service.RouterService;
+import com.jaswine.log.Log;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;

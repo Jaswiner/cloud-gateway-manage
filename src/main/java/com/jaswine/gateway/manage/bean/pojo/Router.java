@@ -2,7 +2,7 @@ package com.jaswine.gateway.manage.bean.pojo;
 
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.lanswon.commons.web.custom.pojo.BasePojo;
+import com.jaswine.bean.base.BasePojo;
 import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -10,6 +10,31 @@
 
 
 
+
+    <developers>
+        <developer>
+            <name>Jaswine</name>
+            <roles>
+                <role>Owner</role>
+            </roles>
+            <url>https://jaswine.com</url>
+        </developer>
+    </developers>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>display</name>
+            <url>http://jaswine.top:9981/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>display</name>
+            <url>http://jaswine.top:9981/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
     <properties>
         <spring.boot.version>2.1.5.RELEASE</spring.boot.version>
         <spring.cloud.version>Greenwich.SR5</spring.cloud.version>
@@ -20,7 +45,7 @@
         <springboot.druid.version>1.1.22</springboot.druid.version>
         <springfox.swagger.version>2.9.2</springfox.swagger.version>
         <baomidou.version>3.2.0</baomidou.version>
-        <mysql.version>5.1.48</mysql.version>
+        <mysql.version>5.1.49</mysql.version>
 
     </properties>
 
@@ -115,15 +140,48 @@
         </dependency>
 
         <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+
+
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
         </dependency>
 
+
+
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>26.0-jre</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jaswine</groupId>
+            <artifactId>cloud-base-bean</artifactId>
+            <version>1.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jaswine</groupId>
+            <artifactId>tools-core</artifactId>
+            <version>1.2-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

@@ -1,8 +1,8 @@
 package com.jaswine.gateway.manage.rest;
 
-import com.lanswon.commons.web.custom.dto.DTO;
-import com.lanswon.gateway.manage.bean.cd.LogCD;
-import com.lanswon.gateway.manage.service.LogService;
+import com.jaswine.bean.base.dto.DTO;
+import com.jaswine.gateway.manage.bean.cd.LogCD;
+import com.jaswine.gateway.manage.service.LogService;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

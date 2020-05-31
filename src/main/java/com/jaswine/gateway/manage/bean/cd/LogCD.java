@@ -1,6 +1,6 @@
 package com.jaswine.gateway.manage.bean.cd;
 
-import com.lanswon.commons.web.custom.cd.BaseCd;
+import com.jaswine.bean.base.BaseCd;
 import lombok.Data;
 
 import java.util.Date;

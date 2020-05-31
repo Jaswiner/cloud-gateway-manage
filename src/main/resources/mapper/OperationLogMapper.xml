@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jaswine.gateway.manage.mapper.OperationLogMapper">
+
+    <select id="getOperationLogPage" resultType="com.jaswine.gateway.manage.bean.pojo.OperationLogPojo">
+        SELECT
+               username,
+               operation,
+               start_time,
+               time,
+               method,
+               params,
+               ip,
+               method_type
+        FROM operation_log
+        WHERE 1 = 1
+
+        <if test="cd.userName != '' and cd.userName != null">
+            AND username = #{cd.userName}
+        </if>
+
+        <if test=" cd.startTime != null">
+            AND start_time &gt;= #{cd.startTime}
+        </if>
+
+        <if test="cd.endTime != null">
+            AND start_time &lt;= #{cd.endTime}
+        </if>
+
+    </select>
+</mapper>
+    

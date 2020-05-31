@@ -2,12 +2,12 @@ package com.jaswine.gateway.manage.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.lanswon.commons.web.custom.dto.DTO;
-import com.lanswon.commons.web.custom.dto.DataRtnDTO;
-import com.lanswon.commons.web.custom.rtn.CustomRtnEnum;
-import com.lanswon.gateway.manage.bean.cd.LogCD;
-import com.lanswon.gateway.manage.bean.pojo.OperationLogPojo;
-import com.lanswon.gateway.manage.mapper.OperationLogMapper;
+import com.jaswine.bean.base.dto.DTO;
+import com.jaswine.bean.base.dto.DataRtnDTO;
+import com.jaswine.bean.base.rtn.CustomRtnEnum;
+import com.jaswine.gateway.manage.bean.cd.LogCD;
+import com.jaswine.gateway.manage.bean.pojo.OperationLogPojo;
+import com.jaswine.gateway.manage.mapper.OperationLogMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

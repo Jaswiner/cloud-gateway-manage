@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jaswine.gateway.manage.mapper.RouterMapper">
+
+
+    <select id="getAllRouter" resultType="com.jaswine.gateway.manage.bean.pojo.Router">
+        SELECT
+            id,
+            route_id,
+            uri,
+            predicates,
+            filters,
+            orders,
+            description,
+            status,
+            created_time,
+            updated_time,
+            created_by,
+            updated_by
+        FROM cloud_gateway.gateway
+    </select>
+
+</mapper>
+    

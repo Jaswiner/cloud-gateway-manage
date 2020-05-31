@@ -1,12 +1,13 @@
 package com.jaswine.gateway.manage.aspect;
 
-import com.lanswon.commons.core.log.Log;
-import com.lanswon.commons.web.custom.dto.DTO;
-import com.lanswon.commons.web.custom.dto.SimpleRtnDTO;
-import com.lanswon.commons.web.custom.rtn.CustomRtnEnum;
-import com.lanswon.commons.web.net.IpAddressUtil;
-import com.lanswon.gateway.manage.bean.pojo.OperationLogPojo;
-import com.lanswon.gateway.manage.mapper.OperationLogMapper;
+
+import com.jaswine.bean.base.dto.DTO;
+import com.jaswine.bean.base.dto.SimpleRtnDTO;
+import com.jaswine.bean.base.rtn.CustomRtnEnum;
+import com.jaswine.gateway.manage.bean.pojo.OperationLogPojo;
+import com.jaswine.gateway.manage.mapper.OperationLogMapper;
+import com.jaswine.log.Log;
+import com.jaswine.net.IpAddressUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -34,10 +35,11 @@ import java.util.Objects;
 @Component
 public class LogAspect {
 
+
 	@Resource
 	private OperationLogMapper operationLogMapper;
 
-	@Pointcut("@annotation(com.lanswon.commons.core.log.Log)")
+	@Pointcut("@annotation(com.jaswine.log.Log)")
 	public void pointCut(){}
 
 
@@ -99,6 +101,4 @@ public class LogAspect {
 		operationLogMapper.insert(logPojo);
 		return true;
 	}
-
-
 }

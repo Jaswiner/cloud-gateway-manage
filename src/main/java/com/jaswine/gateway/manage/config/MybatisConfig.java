@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
  * @author Jaswine
  */
 @Configuration
-@MapperScan(basePackages = "com.lanswon.gateway.manage.mapper")
+@MapperScan(basePackages = "com.jaswine.gateway.manage.mapper")
 @Slf4j
 public class MybatisConfig {
 
