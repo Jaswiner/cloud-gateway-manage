@@ -1,0 +1,33 @@
+# 路由信息Request
+
+
+# 初始化路由信息表
+GET http://{{host}}:{{port}}/{{path}}/route/init
+Content-Type: application/json
+
+###  获得所有路由信息
+POST  http://{{host}}:{{port}}/{{path}}/route/all
+Content-Type: application/json
+
+{
+"page":1,
+"limit":10
+}
+
+### 新增路由信息
+POST http://{{host}}:{{port}}/{{path}}/route
+Content-Type: application/json
+
+{
+
+  "routeId": "jkkl",
+  "uri": "lb/closudsa",
+  "predicates": "-path",
+  "filters": "klksl",
+  "orders": 1,
+  "description": "tessst",
+  "status": 1
+}
+
+###
+

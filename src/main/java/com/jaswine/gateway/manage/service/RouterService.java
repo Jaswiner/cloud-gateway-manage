@@ -7,7 +7,8 @@ import com.jaswine.bean.base.dto.DTO;
 import com.jaswine.bean.base.dto.DataRtnDTO;
 import com.jaswine.bean.base.dto.SimpleRtnDTO;
 import com.jaswine.bean.base.rtn.CustomRtnEnum;
-import com.jaswine.bean.message.Constant;
+import com.jaswine.bean.message.MessageConstant;
+import com.jaswine.bean.redis.RedisKeysConstant;
 import com.jaswine.gateway.manage.bean.cd.RouterCd;
 import com.jaswine.gateway.manage.bean.pojo.Router;
 import com.jaswine.gateway.manage.mapper.RouterMapper;
@@ -15,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.jdbc.ScriptRunner;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +27,7 @@ import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Set;
 
 /**
  * Router Service
@@ -41,6 +44,8 @@ public class RouterService {
 	private RouterMapper routerMapper;
 	@Resource
 	private RocketMQTemplate rocketMQTemplate;
+	@Resource
+	private RedisTemplate<String,Object> redisTemplate;
 
 
 	/**
@@ -80,7 +85,7 @@ public class RouterService {
 		}
 
 		log.info("新增成功,发送消息");
-		rocketMQTemplate.convertAndSend(Constant.MSG_TOPIC_ADD_GATEWAY,router);
+		rocketMQTemplate.convertAndSend(MessageConstant.MSG_TOPIC_ADD_GATEWAY,router);
 		return new SimpleRtnDTO(CustomRtnEnum.SUCCESS.getStatus(), CustomRtnEnum.SUCCESS.getMsg());
 
 	}
@@ -150,16 +155,28 @@ public class RouterService {
 
 	private boolean checkDatatableExist(){
 		log.info("检查 路由表 & 日志表  是否存在");
-		if (routerMapper.checkTableExist(Constant.GATEWAY_TABLE_NAME) == null){
+		if (routerMapper.checkTableExist(MessageConstant.GATEWAY_TABLE_NAME) == null){
 			log.error("路由表不存在");
 			return false;
 		}
 
-		if (routerMapper.checkTableExist(Constant.LOG_TABLE_NAME) == null){
+		if (routerMapper.checkTableExist(MessageConstant.LOG_TABLE_NAME) == null){
 			log.error("日志表不存在");
 			return false;
 		}
 
 		return true;
+	}
+
+	public DTO initRoutesInRedis() {
+		log.info("初始化Redis中的路由信息");
+		redisTemplate.delete(RedisKeysConstant.KEY_GATEWAY_ROUTES);
+
+		Set<Router> routes = routerMapper.getAllRouteWithOutPage();
+		redisTemplate.opsForList().leftPushAll(RedisKeysConstant.KEY_GATEWAY_ROUTES, routes);
+		rocketMQTemplate.convertAndSend(MessageConstant.MSG_TOPIC_INIT_GATEWAY,1);
+
+		log.info(CustomRtnEnum.SUCCESS.toString()+"-->{}",redisTemplate.opsForList().leftPop(RedisKeysConstant.KEY_GATEWAY_ROUTES));
+		return new DataRtnDTO<>(CustomRtnEnum.SUCCESS.getStatus(),CustomRtnEnum.SUCCESS.getMsg(),routes);
 	}
 }

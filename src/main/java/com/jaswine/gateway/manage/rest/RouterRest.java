@@ -110,4 +110,10 @@ public class RouterRest {
 	public DTO getAllRouter(@RequestBody RouterCd cd){
 		return routerService.getAllRouter(cd);
 	}
+
+	@GetMapping(value = "redis/init")
+	@ApiOperation(value = "初始化Redis中的路由信息")
+	public DTO initRoutesInRedis(){
+		return routerService.initRoutesInRedis();
+	}
 }

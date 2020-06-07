@@ -19,6 +19,22 @@
             updated_by
         FROM cloud_gateway.gateway
     </select>
+    <select id="getAllRouteWithOutPage" resultType="com.jaswine.gateway.manage.bean.pojo.Router">
+        SELECT
+            id,
+            route_id,
+            uri,
+            predicates,
+            filters,
+            orders,
+            description,
+            status,
+            created_time,
+            updated_time,
+            created_by,
+            updated_by
+        FROM cloud_gateway.gateway
+    </select>
 
 </mapper>
     

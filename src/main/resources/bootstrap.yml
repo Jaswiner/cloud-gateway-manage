@@ -4,8 +4,6 @@ spring:
 ---
 server:
   port: 8446
-  servlet:
-    context-path: /gateway_manage
 ---
 # nacos 配置
 spring:

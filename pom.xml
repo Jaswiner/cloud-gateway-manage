@@ -175,7 +175,7 @@
         <dependency>
             <groupId>com.jaswine</groupId>
             <artifactId>cloud-base-bean</artifactId>
-            <version>1.1-SNAPSHOT</version>
+            <version>[1.1-SNAPSHOT,)</version>
         </dependency>
 
         <dependency>

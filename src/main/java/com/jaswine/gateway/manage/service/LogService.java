@@ -34,4 +34,5 @@ public class LogService {
 		return new DataRtnDTO<>(CustomRtnEnum.SUCCESS.getStatus(),CustomRtnEnum.SUCCESS.getMsg(),logPage);
 
 	}
+
 }

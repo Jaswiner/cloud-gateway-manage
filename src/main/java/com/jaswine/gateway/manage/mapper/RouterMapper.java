@@ -10,6 +10,8 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
+import java.util.Set;
+
 /**
  * 路由Mapper
  *
@@ -26,4 +28,6 @@ public interface RouterMapper extends BaseMapper<Router> {
 	/** 获得所有路由信息 */
 	IPage<Router> getAllRouter(@Param("page") Page page,
 	                           @Param("cd") RouterCd cd);
+
+	Set<Router> getAllRouteWithOutPage();
 }
