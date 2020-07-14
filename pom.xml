@@ -45,7 +45,7 @@
         <springboot.druid.version>1.1.22</springboot.druid.version>
         <springfox.swagger.version>2.9.2</springfox.swagger.version>
         <baomidou.version>3.2.0</baomidou.version>
-        <mysql.version>5.1.49</mysql.version>
+        <mysql.version>8.0.16</mysql.version>
 
     </properties>
 
