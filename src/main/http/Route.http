@@ -15,19 +15,36 @@ Content-Type: application/json
 }
 
 ### 新增路由信息
-POST http://{{host}}:{{port}}/{{path}}/route
+POST http://{{host}}:{{port}}/route
 Content-Type: application/json
 
 {
 
-  "routeId": "jkkl",
-  "uri": "lb/closudsa",
-  "predicates": "-path",
-  "filters": "klksl",
+  "routeId": "cloud-uum",
+  "uri": "lb://CLOUD-UUM",
+  "predicates": [{
+    "name": "Path",
+    "args": {
+      "pattern": "/uum/**"
+    }
+  }],
+  "filters": [{
+      "name": "RewritePath",
+      "args": {
+        "regexp": "/uum/(?<remaining>.*)",
+        "replacement": "/${remaining}"
+      }
+  }],
   "orders": 1,
-  "description": "tessst",
+  "description": "统一用户服务",
   "status": 1
 }
+
+### 修改网关状态
+PUT http://{{host}}:{{port}}/route/status/7970242716962177025?status=1
+Content-Type: application/json
+
+
 
 ###
 

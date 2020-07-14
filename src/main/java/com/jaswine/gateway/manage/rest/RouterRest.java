@@ -2,9 +2,10 @@ package com.jaswine.gateway.manage.rest;
 
 import com.jaswine.bean.base.dto.DTO;
 import com.jaswine.gateway.manage.bean.cd.RouterCd;
-import com.jaswine.gateway.manage.bean.pojo.Router;
+import com.jaswine.gateway.manage.bean.dto.RouteDTO;
+import com.jaswine.gateway.manage.bean.pojo.Route;
 import com.jaswine.gateway.manage.service.RouterService;
-import com.jaswine.log.Log;
+import com.jaswine.tools.log.Log;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
@@ -41,14 +42,14 @@ public class RouterRest {
 
 	/**
 	 * 插入路由信息
-	 * @param router 路由
+	 * @param routeDTO 路由
 	 * @return dto
 	 */
 	@Log(description = "新增路由信息")
 	@PostMapping
 	@ApiOperation(value = "新增路由信息")
-	public DTO insertRouter(@RequestBody Router router){
-		return routerService.insertRouter(router);
+	public DTO insertRouter(@RequestBody RouteDTO routeDTO){
+		return routerService.insertRouter(routeDTO);
 	}
 
 	/**
@@ -78,15 +79,15 @@ public class RouterRest {
 	/**
 	 * 更新路由信息
 	 * @param rid 路由id
-	 * @param router 路由信息
+	 * @param route 路由信息
 	 * @return dto
 	 */
 	@Log(description = "更新路由信息")
 	@PutMapping(value = "{rid}")
 	@ApiOperation(value = "更新路由信息")
 	public DTO updateRouter(@PathVariable Long rid,
-	                        @RequestBody Router router){
-		return routerService.updateRouter(rid,router);
+	                        @RequestBody Route route){
+		return routerService.updateRouter(rid, route);
 	}
 
 	/**
@@ -115,5 +116,12 @@ public class RouterRest {
 	@ApiOperation(value = "初始化Redis中的路由信息")
 	public DTO initRoutesInRedis(){
 		return routerService.initRoutesInRedis();
+	}
+
+	@PutMapping(value = "/status/{id}")
+	@ApiOperation(value = "修改路由状态")
+	public DTO updateRouteStatus(@PathVariable(value = "id")Long id,
+	                             @RequestParam(value = "status")Integer status){
+		return routerService.updateRouteStatus(id,status);
 	}
 }

@@ -1,7 +1,7 @@
 package com.jaswine.gateway.manage.bean.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.jaswine.log.BaseLogPojo;
+import com.jaswine.tools.log.BaseLogPojo;
 import lombok.Data;
 
 /**

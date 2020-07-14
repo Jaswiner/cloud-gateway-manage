@@ -1,8 +1,8 @@
 SET NAMES utf8;
 
 -- 网关路由表
-DROP TABLE IF EXISTS gateway;
-CREATE TABLE gateway
+DROP TABLE IF EXISTS route;
+CREATE TABLE route
 (
     id           bigint(20) PRIMARY KEY COMMENT 'id',
     route_id     VARCHAR(100) NOT NULL COMMENT '路由id',
@@ -23,7 +23,7 @@ CREATE UNIQUE INDEX ux_cloud_gateway_uri ON gateway (uri);
 
 -- DML初始数据
 -- 路由数据
-INSERT INTO gateway (id, route_id, uri, predicates, filters, orders, description, status, created_time, updated_time, created_by, updated_by)
+INSERT INTO route (id, route_id, uri, predicates, filters, orders, description, status, created_time, updated_time, created_by, updated_by)
 VALUES
 (101,
  'uua-server',

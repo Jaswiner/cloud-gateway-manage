@@ -9,32 +9,33 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 /**
  * 路由表
  *
  * @author jaswine
  */
 @Data
-@Builder
+@Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName(value = "gateway")
+@TableName(value = "route")
 @ApiModel(value = "路由实体",description = "路由实体")
-public class Router extends BasePojo {
+public class Route extends BasePojo {
 
 	/** 路由id */
 	private String routeId;
-	/** 路由id */
+	/** 指向 */
 	private String uri;
-	/** 路由id */
+	/** 谓语动词 */
 	private String predicates;
-	/** 路由id */
+	/** 过滤器 */
 	private String filters;
-	/** 路由id */
-	private Long orders;
-	/** 路由id */
+	/** 顺序 */
+	private Integer orders;
+	/** 描述 */
 	private String description;
-	/** 路由id */
-	private Long status;
+	/** 状态 */
+	private Integer status;
 
 }

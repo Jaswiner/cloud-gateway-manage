@@ -6,8 +6,8 @@ import com.jaswine.bean.base.dto.SimpleRtnDTO;
 import com.jaswine.bean.base.rtn.CustomRtnEnum;
 import com.jaswine.gateway.manage.bean.pojo.OperationLogPojo;
 import com.jaswine.gateway.manage.mapper.OperationLogMapper;
-import com.jaswine.log.Log;
-import com.jaswine.net.IpAddressUtil;
+import com.jaswine.tools.log.Log;
+import com.jaswine.tools.net.IpAddressUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -39,7 +39,7 @@ public class LogAspect {
 	@Resource
 	private OperationLogMapper operationLogMapper;
 
-	@Pointcut("@annotation(com.jaswine.log.Log)")
+	@Pointcut("@annotation(com.jaswine.tools.log.Log)")
 	public void pointCut(){}
 
 
